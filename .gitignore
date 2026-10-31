@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+*.pem
+*service-account*.json
+.sites-runtime/
+
+.openai/
+credentials/
+secrets/
+*.key
+*.log
+.DS_Store
+Thumbs.db

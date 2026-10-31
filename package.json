@@ -1,0 +1,16 @@
+{
+  "name": "papelaria-stahnke",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "node --watch server/servidor.mjs",
+    "start": "node server/servidor.mjs",
+    "build": "node scripts/gerar-build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "configurar": "node scripts/configurar-google.mjs"
+  }
+}

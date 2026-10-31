@@ -1,0 +1,146 @@
+{
+  "Produtos": [
+    [
+      "id",
+      "sku",
+      "nome",
+      "descricao",
+      "categoria",
+      "marca",
+      "preco",
+      "imagem_url",
+      "imagem_alt",
+      "ativo",
+      "disponibilidade",
+      "tipo_material",
+      "cor_tinta",
+      "numero_materias",
+      "subcategoria"
+    ]
+  ],
+  "Exemplos": [
+    [
+      "id",
+      "sku",
+      "nome",
+      "descricao",
+      "categoria",
+      "marca",
+      "preco",
+      "imagem_url",
+      "imagem_alt",
+      "ativo",
+      "disponibilidade",
+      "tipo_material",
+      "cor_tinta",
+      "numero_materias",
+      "subcategoria"
+    ],
+    [
+      "exemplo-caneta",
+      "EX-001",
+      "Caneta de exemplo",
+      "APENAS EXEMPLO: substitua pelos dados confirmados.",
+      "Escrita",
+      "",
+      12.9,
+      "",
+      "Caneta de exemplo",
+      "não",
+      "a confirmar",
+      "caneta",
+      "preta",
+      ""
+    ]
+  ],
+  "Listas": [
+    [
+      "id",
+      "colegio",
+      "ano",
+      "serie_turma",
+      "status"
+    ],
+    [
+      "modelo-nao-oficial",
+      "Colégio de exemplo",
+      2027,
+      "Turma de exemplo",
+      "exemplo"
+    ]
+  ],
+  "Itens_listas": [
+    [
+      "id",
+      "lista_id",
+      "nome",
+      "quantidade",
+      "produtos_ids"
+    ],
+    [
+      "item-exemplo",
+      "modelo-nao-oficial",
+      "Caneta preta",
+      3,
+      "exemplo-caneta"
+    ]
+  ],
+  "Instrucoes": [
+    [
+      "Campo / tarefa",
+      "Como preencher"
+    ],
+    [
+      "Produtos",
+      "Cadastre apenas produtos confirmados. A aba começa vazia. Exemplos não são publicados."
+    ],
+    [
+      "ID",
+      "Código permanente, único, sem espaços: caneta-preta-001. Nunca reutilize um ID para outro produto."
+    ],
+    [
+      "Preço",
+      "Número positivo em reais, por exemplo 12,90. Vazio ou inválido aparece como preço a confirmar."
+    ],
+    [
+      "Ativo",
+      "sim publica; não retira do catálogo. Não apague IDs de itens já cadastrados: desative."
+    ],
+    [
+      "Disponibilidade",
+      "disponível, indisponível ou a confirmar. Não representa reserva de estoque."
+    ],
+    [
+      "Imagem",
+      "URL HTTPS de imagem autorizada para uso. Informe descrição curta em imagem_alt."
+    ],
+    [
+      "Listas",
+      "Use pendente até receber a lista; confirmada somente após validar com o colégio. exemplo nunca é oficial."
+    ],
+    [
+      "Itens_listas",
+      "Relacione lista_id e produtos_ids permanentes separados por vírgula. Quantidade: inteiro de 1 a 99."
+    ],
+    [
+      "Sincronização",
+      "Após conectar o servidor: consulta a cada 30 s; cache de até 15 s; meta de até 60 s com rede disponível."
+    ],
+    [
+      "Conexão",
+      "Compartilhe como leitor com a conta de serviço Google configurada no servidor. Não publique a planilha para edição."
+    ],
+    [
+      "Cabeçalhos",
+      "Não renomeie abas ou cabeçalhos. Até 5.000 produtos, 1.000 listas e 5.000 itens nesta versão."
+    ],
+    [
+      "Pedidos",
+      "Esta planilha não recebe pagamentos, pedidos ou dados pessoais."
+    ],
+    [
+      "Fonte",
+      "Estrutura criada para Papelaria Stahnke. Nenhum produto, preço ou lista oficial foi fornecido."
+    ]
+  ]
+}

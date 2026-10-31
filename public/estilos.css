@@ -1,0 +1,1723 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  --ink: #183d2d;
+  --green: #006238;
+  --bg: #fafcf8;
+  --soft: #e8f0d9;
+  --accent: #d9e9b1;
+  --line: #d7dfd2;
+  --radius: 10px;
+  --title: Arial, Helvetica, sans-serif;
+}
+body.bento {
+  --bg: #f3f5ec;
+  --soft: #e3ecb7;
+  --accent: #deef84;
+  --radius: 26px;
+  --title: Arial, Helvetica, sans-serif;
+}
+body.revista {
+  --bg: #f7f4ec;
+  --soft: #e9e7d5;
+  --accent: #dedfb2;
+  --line: #bcc3ad;
+  --radius: 0;
+  --title: Georgia, "Times New Roman", serif;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  cursor: pointer;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #da6b29;
+  outline-offset: 4px;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--title);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+h1 {
+  font-size: clamp(2.8rem, 5.8vw, 5.6rem);
+}
+h2 {
+  font-size: clamp(2rem, 3.5vw, 3.4rem);
+}
+h3 {
+  font-size: 1.5rem;
+}
+p {
+  max-width: 65ch;
+}
+.wrap {
+  width: min(1280px, calc(100% - 80px));
+  margin-inline: auto;
+}
+.skip {
+  position: fixed;
+  top: -100px;
+  left: 20px;
+  background: white;
+  padding: 16px;
+  z-index: 100;
+}
+.skip:focus {
+  top: 10px;
+}
+.concept-bar {
+  background: #172e23;
+  color: white;
+  padding: 9px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 13px;
+}
+.concept-bar strong {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.concept-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.concept-links a {
+  padding: 6px 13px;
+  border-radius: 5px;
+  color: #d9e7d0;
+}
+.concept-links a.active {
+  background: #e5f0bf;
+  color: #183d2d;
+}
+.notice {
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0.025em;
+  padding: 7px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.header-main {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-block: 25px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex: none;
+}
+.brand img {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+}
+.brand-text {
+  line-height: 1;
+  display: grid;
+  gap: 3px;
+}
+.brand-text small {
+  font: 10px Arial;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.brand-text strong {
+  font: 700 29px var(--title);
+  letter-spacing: -0.05em;
+}
+.search {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+.search input {
+  border: 0;
+  background: transparent;
+  padding: 13px 17px;
+  width: 100%;
+  min-width: 0;
+  outline-offset: -3px;
+}
+.search button {
+  border: 0;
+  background: transparent;
+  padding: 12px 18px;
+  color: var(--ink);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 14px;
+  flex: none;
+}
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.counter {
+  min-width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: white;
+  font-size: 12px;
+}
+.menu-button {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  padding: 9px;
+  border-radius: 5px;
+}
+.site-nav {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+  border-block: 1px solid var(--line);
+  padding: 14px 20px;
+  font-size: 14px;
+}
+.site-nav a:hover,
+.text-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.revista .header-main {
+  position: relative;
+  padding-block: 30px;
+}
+.revista .header-main .brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.revista .brand-text strong {
+  font-size: 40px;
+  font-weight: 400;
+}
+.revista .search {
+  flex: 0 1 260px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+.revista .header-actions {
+  margin-left: auto;
+}
+.bento .site-nav {
+  border: 0;
+  background: #e8eddd;
+  border-radius: 100px;
+  width: min(850px, calc(100% - 40px));
+  margin: auto;
+}
+.hero {
+  padding-block: 56px 60px;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 24px;
+}
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px;
+}
+.hero-copy .eyebrow {
+  margin: 0;
+}
+.hero-copy p {
+  font-size: 18px;
+  max-width: 34ch;
+  color: #52614e;
+}
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  gap: 70px;
+  align-items: center;
+}
+.hero-split h1 {
+  font-size: clamp(3rem, 5.5vw, 5rem);
+}
+.hero-art {
+  background: var(--accent);
+  border-radius: var(--radius);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 460px;
+  overflow: hidden;
+}
+.hero-art .big-art {
+  width: 90%;
+  transform: rotate(-7deg);
+  margin-left: -70px;
+}
+.hero-art .small-art {
+  position: absolute;
+  width: 52%;
+  bottom: 20px;
+  right: -20px;
+  transform: rotate(14deg);
+}
+.art-note {
+  position: absolute;
+  bottom: 20px;
+  left: 22px;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.button {
+  border: 1px solid var(--green);
+  background: var(--green);
+  color: white;
+  padding: 13px 23px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  line-height: 1.3;
+  min-height: 48px;
+}
+.button:hover {
+  background: #144a30;
+  border-color: #144a30;
+}
+.button.secondary {
+  background: transparent;
+  color: var(--green);
+}
+.button.secondary:hover {
+  background: var(--soft);
+}
+.button.full {
+  width: 100%;
+}
+.text-link {
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  padding-block: 10px;
+}
+.button-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.bento-hero {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+}
+.bento-lead {
+  background: var(--accent);
+  border-radius: 28px;
+  padding: 46px;
+  min-height: 490px;
+  position: relative;
+  overflow: hidden;
+}
+.bento-lead h1 {
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  max-width: 10ch;
+}
+.bento-lead p {
+  max-width: 25ch;
+}
+.bento-side {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.bento-tile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  border-radius: 26px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.bento-tile:hover {
+  transform: translateY(-3px);
+}
+.bento-tile.orange {
+  background: #f6d0a9;
+}
+.bento-tile.lilac {
+  background: #e4def2;
+}
+.bento-tile h2 {
+  font-size: 2.3rem;
+}
+.bento-tile img {
+  width: 190px;
+  max-width: none;
+}
+.revista-hero .edition {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 14px;
+  margin-bottom: 32px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.revista-hero h1 {
+  font-weight: 400;
+  font-size: clamp(3.4rem, 7.8vw, 7.4rem);
+  margin-bottom: 35px;
+  max-width: 16ch;
+}
+.revista-spread {
+  display: grid;
+  grid-template-columns: 1.6fr 0.75fr;
+  gap: 50px;
+}
+.revista-spread .hero-art {
+  min-height: 420px;
+}
+.revista-spread .hero-art img {
+  max-height: 400px;
+  width: 65%;
+  transform: rotate(-8deg);
+}
+.editorial-caption {
+  padding-block: 24px;
+  border-top: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+}
+.editorial-caption h2 {
+  font-size: 2.7rem;
+  font-weight: 400;
+}
+.section {
+  padding-block: 50px;
+}
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 28px;
+}
+.section-head p {
+  font-size: 14px;
+  color: #62715f;
+  margin-top: 13px;
+}
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+.category {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  background: var(--soft);
+  border-radius: var(--radius);
+  transition: background 0.2s;
+}
+.category:hover {
+  background: var(--accent);
+}
+.category span {
+  font-size: 12px;
+}
+.category h3 {
+  font-size: 1.7rem;
+  font-weight: 500;
+  flex: 1;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+}
+.product-card {
+  min-width: 0;
+  position: relative;
+}
+.product-picture {
+  aspect-ratio: 1.08;
+  background: var(--soft);
+  border-radius: var(--radius);
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.product-picture img {
+  width: 92%;
+  transition: transform 0.3s;
+}
+.product-card:hover .product-picture img {
+  transform: translateY(-7px) rotate(-3deg);
+}
+.product-picture .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  padding: 4px 9px;
+  background: #ffffffb3;
+  border-radius: 30px;
+  z-index: 1;
+}
+.product-card h3 {
+  font: 600 18px Arial;
+  letter-spacing: -0.025em;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+.product-card .meta {
+  font-size: 13px;
+  color: #687263;
+}
+.product-card .card-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+}
+.product-card .card-bottom strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+.small-add {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-size: 23px;
+  line-height: 1;
+}
+.small-add:hover {
+  background: var(--green);
+  color: white;
+}
+.bento .product-card {
+  background: white;
+  border-radius: 26px;
+  padding: 14px;
+  border: 1px solid #e2e7d6;
+}
+.bento .product-picture {
+  border-radius: 18px;
+}
+.bento .product-card h3,
+.bento .product-card .meta,
+.bento .card-bottom {
+  margin-inline: 9px;
+}
+.revista .product-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.revista .product-card {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--ink);
+}
+.revista .product-card h3 {
+  font: 400 25px Georgia;
+}
+.revista .product-picture {
+  aspect-ratio: 1.1;
+}
+.wide-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 380px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--soft);
+}
+.wide-story .story-art {
+  display: grid;
+  place-items: center;
+  background: #d8e2c6;
+}
+.wide-story img {
+  width: 70%;
+  max-height: 370px;
+}
+.wide-story .story-copy {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 24px;
+}
+.wide-story p {
+  font-size: 16px;
+  color: #53624c;
+}
+.contact-banner {
+  background: var(--ink);
+  color: #f8fbef;
+  padding: 48px;
+  border-radius: var(--radius);
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.contact-banner h2 {
+  font-size: 2.5rem;
+}
+.contact-banner p {
+  margin-top: 14px;
+  color: #d0dbc7;
+}
+.contact-banner .button {
+  background: #e1edbf;
+  color: var(--ink);
+  border: 0;
+  white-space: nowrap;
+}
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 52px 0 24px;
+  margin-top: 60px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.4fr;
+  gap: 40px;
+}
+.footer-grid h3 {
+  font: 600 14px Arial;
+  margin-bottom: 18px;
+  letter-spacing: 0;
+}
+.footer-grid a {
+  display: block;
+  font-size: 14px;
+  margin: 9px 0;
+}
+.footer-grid p {
+  font-size: 14px;
+  color: #596852;
+  margin-top: 16px;
+}
+.footer-bottom {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+  padding-top: 20px;
+  font-size: 12px;
+  color: #65715e;
+}
+.breadcrumb {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #667060;
+  margin: 30px 0;
+}
+.page-heading {
+  margin-bottom: 40px;
+}
+.page-heading h1 {
+  font-size: clamp(2.5rem, 5vw, 4.6rem);
+  margin-bottom: 18px;
+}
+.page-heading p {
+  color: #607057;
+}
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 44px;
+}
+.filters {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  align-self: start;
+}
+.filters h2 {
+  font: 600 16px Arial;
+  letter-spacing: 0;
+  margin-bottom: 20px;
+}
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 17px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.filter-label input {
+  accent-color: var(--green);
+  width: 17px;
+  height: 17px;
+}
+.catalog-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+.catalog-toolbar select {
+  border: 1px solid var(--line);
+  padding: 10px;
+  background: var(--bg);
+  border-radius: 6px;
+  max-width: 200px;
+}
+.catalog-layout .product-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.bento .catalog-layout {
+  grid-template-columns: 1fr;
+}
+.bento .filters {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  border: 0;
+  padding: 18px 25px;
+  background: var(--soft);
+  border-radius: 100px;
+}
+.bento .filters h2,
+.bento .filter-label {
+  margin: 0;
+}
+.bento .catalog-layout .product-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.revista .catalog-layout {
+  grid-template-columns: 1fr;
+}
+.revista .filters {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-block: 1px solid var(--ink);
+  padding: 18px;
+}
+.revista .filters h2,
+.revista .filter-label {
+  margin: 0;
+}
+.empty {
+  text-align: center;
+  padding: 90px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.empty h2 {
+  margin-bottom: 18px;
+}
+.empty p {
+  margin: 0 auto 25px;
+}
+.product-detail {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 75px;
+}
+.detail-art {
+  background: var(--soft);
+  border-radius: var(--radius);
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+}
+.detail-art img {
+  width: 90%;
+}
+.detail-copy {
+  padding-top: 12px;
+}
+.detail-copy h1 {
+  font-size: clamp(2.6rem, 4vw, 4.3rem);
+  margin-bottom: 22px;
+}
+.detail-copy p {
+  color: #5b6d51;
+  margin: 20px 0;
+}
+.price {
+  font-size: 1.5rem;
+  display: block;
+  margin-top: 20px;
+}
+.meta-note {
+  font-size: 13px;
+  color: #65735c;
+}
+.qty {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  align-items: center;
+  background: var(--bg);
+}
+.qty button {
+  width: 42px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 20px;
+}
+.qty output {
+  min-width: 36px;
+  text-align: center;
+}
+.add-row {
+  display: flex;
+  gap: 14px;
+  margin: 28px 0;
+}
+.add-row .button {
+  flex: 1;
+}
+.detail-info {
+  margin-top: 35px;
+}
+.detail-info details,
+.faq details {
+  border-block-start: 1px solid var(--line);
+  padding-block: 19px;
+}
+.detail-info summary,
+.faq summary {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+.detail-info p,
+.faq p {
+  font-size: 15px;
+  margin-top: 14px;
+  color: #5b6d51;
+}
+.bento .detail-copy {
+  background: white;
+  padding: 35px;
+  border-radius: 26px;
+}
+.revista .detail-copy h1 {
+  font-weight: 400;
+}
+.two-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(300px, 1fr);
+  gap: 50px;
+}
+.panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px;
+}
+.panel h2 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: 125px 1fr auto;
+  gap: 25px;
+  align-items: center;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cart-item:first-child {
+  padding-top: 0;
+}
+.cart-item img {
+  background: var(--soft);
+  width: 125px;
+  border-radius: var(--radius);
+}
+.cart-item h2 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+.cart-item .meta-note {
+  margin-bottom: 12px;
+}
+.remove {
+  border: 0;
+  background: none;
+  text-decoration: underline;
+  color: #7d4632;
+  font-size: 13px;
+  padding: 10px 0;
+}
+.summary {
+  align-self: start;
+}
+.summary dl {
+  margin: 0;
+}
+.summary dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 17px 0;
+  font-size: 14px;
+}
+.summary dd {
+  margin: 0;
+  text-align: right;
+}
+.summary .total {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  font-weight: 700;
+  font-size: 17px;
+}
+.summary .meta-note {
+  margin-block: 20px;
+}
+.checkout-steps {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+.checkout-steps li {
+  flex: 1;
+  border-bottom: 3px solid var(--line);
+  padding: 12px 0;
+  font-size: 14px;
+}
+.checkout-steps li.current {
+  border-color: var(--green);
+  font-weight: 700;
+}
+.form-stack {
+  display: grid;
+  gap: 22px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.field input,
+.field textarea,
+.field select {
+  border: 1px solid var(--line);
+  padding: 13px 14px;
+  background: var(--bg);
+  border-radius: 6px;
+  min-width: 0;
+  color: var(--ink);
+  width: 100%;
+}
+.field textarea {
+  min-height: 145px;
+  resize: vertical;
+}
+.callout {
+  background: var(--soft);
+  padding: 18px 22px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+.radio-card {
+  display: flex;
+  align-items: start;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  cursor: pointer;
+}
+.radio-card input {
+  accent-color: var(--green);
+  margin-top: 6px;
+}
+.radio-card span {
+  display: grid;
+  gap: 7px;
+}
+.radio-card small {
+  font-size: 13px;
+  font-weight: 400;
+  color: #65735c;
+}
+.success {
+  max-width: 800px;
+  margin: 70px auto;
+  text-align: center;
+}
+.success-mark {
+  font-size: 40px;
+  width: 85px;
+  height: 85px;
+  display: grid;
+  place-items: center;
+  background: var(--soft);
+  border-radius: 50%;
+  margin: 0 auto 25px;
+}
+.success h1 {
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+}
+.success p {
+  margin: 0 auto 28px;
+}
+.success .button-row {
+  justify-content: center;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-grid .detail-art {
+  max-height: 500px;
+  aspect-ratio: 1.2;
+}
+.about-copy {
+  display: grid;
+  gap: 25px;
+}
+.about-copy h2 {
+  font-weight: 400;
+}
+.faq {
+  max-width: 860px;
+  margin-inline: auto;
+}
+.faq details:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+.contact-card {
+  padding: 35px;
+  background: var(--soft);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+}
+.contact-card h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.contact-card p {
+  margin-bottom: 24px;
+}
+.contact-card dl div {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding: 13px 0;
+  font-size: 14px;
+}
+.contact-card dd {
+  margin: 0;
+  text-align: right;
+}
+.section-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #566749;
+}
+.section-label + .section-head {
+  margin-top: 12px;
+}
+#toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translate(-50%, 15px);
+  background: #153d2b;
+  color: white;
+  border: 1px solid #789267;
+  padding: 15px 24px;
+  border-radius: 8px;
+  box-shadow: 0 8px 35px #0002;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+  max-width: calc(100% - 32px);
+  text-align: center;
+  font-size: 14px;
+}
+#toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.proposal-info {
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  margin-top: 45px;
+  padding-top: 25px;
+  color: #617158;
+}
+.compact-main {
+  min-height: 55vh;
+  padding-bottom: 25px;
+}
+.revista h2 {
+  font-weight: 400;
+}
+.revista .button {
+  border-radius: 0;
+}
+.bento h1 {
+  letter-spacing: -0.06em;
+}
+.bento .page-heading {
+  background: var(--accent);
+  padding: 35px;
+  border-radius: 26px;
+}
+.bento .wide-story {
+  background: #e1dbed;
+}
+.revista .section-head {
+  border-top: 1px solid var(--ink);
+  padding-top: 25px;
+}
+.revista .hero {
+  padding-bottom: 20px;
+}
+@media (min-width: 1600px) {
+  .wrap {
+    width: 1360px;
+  }
+  .hero-split {
+    gap: 90px;
+  }
+  .hero-art {
+    min-height: 530px;
+  }
+}
+@media (max-width: 1050px) {
+  .wrap {
+    width: calc(100% - 48px);
+  }
+  .header-main {
+    gap: 20px;
+  }
+  .header-actions > a:first-child {
+    display: none;
+  }
+  .hero-split {
+    gap: 35px;
+  }
+  .hero-art {
+    min-height: 380px;
+  }
+  .bento-lead {
+    padding: 30px;
+  }
+  .bento-tile {
+    padding: 20px;
+  }
+  .bento-tile h2 {
+    font-size: 1.8rem;
+  }
+  .bento-tile img {
+    width: 140px;
+  }
+  .product-grid {
+    gap: 18px;
+  }
+  .catalog-layout {
+    grid-template-columns: 175px 1fr;
+    gap: 25px;
+  }
+  .catalog-layout .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .bento .catalog-layout .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .product-detail {
+    gap: 35px;
+  }
+  .two-columns {
+    gap: 25px;
+  }
+  .footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+  .footer-grid > div:last-child {
+    grid-column: 1/-1;
+  }
+  .revista .brand-text strong {
+    font-size: 33px;
+  }
+  .revista .search {
+    max-width: 210px;
+  }
+  .site-nav {
+    gap: 25px;
+  }
+  .wide-story .story-copy {
+    padding: 32px;
+  }
+}
+@media (max-width: 720px) {
+  .wrap {
+    width: calc(100% - 36px);
+  }
+  .concept-bar {
+    padding: 10px 12px;
+    display: block;
+    text-align: center;
+  }
+  .concept-bar strong {
+    display: none;
+  }
+  .concept-links {
+    justify-content: center;
+    gap: 2px;
+  }
+  .concept-links a {
+    font-size: 12px;
+    padding: 7px 11px;
+  }
+  .notice {
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 7px 15px;
+  }
+  .header-main {
+    flex-wrap: wrap;
+    padding-block: 18px;
+    gap: 17px;
+  }
+  .brand img {
+    width: 40px;
+    height: 40px;
+  }
+  .brand-text strong {
+    font-size: 26px;
+  }
+  .header-actions {
+    margin-left: auto;
+    gap: 13px;
+  }
+  .header-actions .cart-word {
+    display: none;
+  }
+  .menu-button {
+    display: block;
+    font-size: 13px;
+  }
+  .search {
+    order: 3;
+    flex: 1 0 100%;
+    border-radius: 7px;
+  }
+  .search input {
+    font-size: 16px;
+    padding: 11px 14px;
+  }
+  .search button {
+    padding: 11px 16px;
+  }
+  .site-nav {
+    display: none;
+    padding: 18px;
+    gap: 0;
+  }
+  .site-nav.open {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    text-align: center;
+  }
+  .bento .site-nav {
+    width: calc(100% - 36px);
+    border-radius: 15px;
+  }
+  .revista .header-main .brand {
+    position: static;
+    transform: none;
+  }
+  .revista .brand-text strong {
+    font-size: 30px;
+  }
+  .revista .header-main {
+    padding-block: 18px;
+  }
+  .revista .search {
+    flex: 1 0 100%;
+    max-width: none;
+    border: 1px solid var(--line);
+  }
+  .hero {
+    padding-block: 28px 35px;
+  }
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .hero-copy {
+    gap: 21px;
+  }
+  .hero-split h1 {
+    font-size: 3.3rem;
+    max-width: 11ch;
+  }
+  .hero-copy p {
+    font-size: 16px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    margin-bottom: 18px;
+  }
+  .hero-art {
+    min-height: 300px;
+  }
+  .hero-art .big-art {
+    width: 85%;
+  }
+  .hero-art .small-art {
+    width: 52%;
+    bottom: 8px;
+  }
+  .button {
+    font-size: 14px;
+    padding: 13px 20px;
+  }
+  .bento-hero {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .bento-lead {
+    min-height: unset;
+    padding: 29px;
+  }
+  .bento-lead h1 {
+    font-size: 3.2rem;
+  }
+  .bento-side {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .bento-tile {
+    grid-template-columns: 1fr;
+    padding: 20px 15px;
+    min-height: 205px;
+  }
+  .bento-tile h2 {
+    font-size: 1.7rem;
+    z-index: 1;
+  }
+  .bento-tile img {
+    width: 130px;
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+  }
+  .revista-hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.04;
+  }
+  .revista-hero .edition {
+    font-size: 10px;
+    margin-bottom: 25px;
+  }
+  .revista-spread {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .revista-spread .hero-art {
+    min-height: 300px;
+  }
+  .editorial-caption {
+    gap: 18px;
+  }
+  .editorial-caption h2 {
+    font-size: 2.25rem;
+  }
+  .section {
+    padding-block: 30px;
+  }
+  .section-head {
+    align-items: start;
+    gap: 15px;
+    margin-bottom: 24px;
+  }
+  .section-head h2 {
+    font-size: 2rem;
+  }
+  .section-head .text-link {
+    font-size: 12px;
+    flex: none;
+  }
+  .section-head p {
+    font-size: 12px;
+  }
+  .categories {
+    gap: 10px;
+  }
+  .category {
+    padding: 18px 10px;
+    display: block;
+    text-align: center;
+  }
+  .category h3 {
+    font-size: 1.2rem;
+    margin-top: 7px;
+  }
+  .category b {
+    display: none;
+  }
+  .product-grid,
+  .revista .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 13px;
+  }
+  .product-card h3,
+  .revista .product-card h3 {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .product-picture {
+    aspect-ratio: 0.95;
+  }
+  .product-picture .badge {
+    top: 8px;
+    left: 8px;
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+  .product-card .meta {
+    font-size: 12px;
+  }
+  .product-card .card-bottom strong {
+    font-size: 12px;
+  }
+  .small-add {
+    width: 33px;
+    height: 33px;
+    flex: none;
+  }
+  .bento .product-card {
+    border-radius: 18px;
+    padding: 9px;
+  }
+  .bento .product-picture {
+    border-radius: 12px;
+  }
+  .bento .product-card h3,
+  .bento .product-card .meta,
+  .bento .card-bottom {
+    margin-inline: 2px;
+  }
+  .wide-story {
+    grid-template-columns: 1fr;
+  }
+  .wide-story .story-art {
+    min-height: 260px;
+  }
+  .wide-story img {
+    width: 65%;
+  }
+  .wide-story .story-copy {
+    padding: 28px;
+  }
+  .wide-story h2 {
+    font-size: 2rem;
+  }
+  .contact-banner {
+    padding: 28px;
+    display: block;
+  }
+  .contact-banner h2 {
+    font-size: 2rem;
+  }
+  .contact-banner p {
+    font-size: 15px;
+    margin-bottom: 23px;
+  }
+  .site-footer {
+    margin-top: 35px;
+    padding-top: 35px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .footer-grid > div:first-child,
+  .footer-grid > div:last-child {
+    grid-column: 1/-1;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 11px;
+  }
+  .breadcrumb {
+    font-size: 12px;
+    margin: 24px 0;
+  }
+  .page-heading {
+    margin-bottom: 27px;
+  }
+  .page-heading h1 {
+    font-size: 2.65rem;
+  }
+  .page-heading p {
+    font-size: 15px;
+  }
+  .catalog-layout,
+  .bento .catalog-layout,
+  .revista .catalog-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .filters,
+  .bento .filters,
+  .revista .filters {
+    display: flex;
+    gap: 10px 18px;
+    flex-wrap: wrap;
+    border: 1px solid var(--line);
+    padding: 18px;
+    border-radius: var(--radius);
+  }
+  .filters h2 {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+  }
+  .filter-label {
+    margin: 0;
+    font-size: 13px;
+  }
+  .bento .filters h2,
+  .revista .filters h2 {
+    width: 100%;
+  }
+  .catalog-layout .product-grid,
+  .bento .catalog-layout .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .catalog-toolbar {
+    font-size: 12px;
+  }
+  .catalog-toolbar select {
+    max-width: 175px;
+    font-size: 12px;
+  }
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .detail-art {
+    aspect-ratio: 1.1;
+  }
+  .detail-copy h1 {
+    font-size: 2.9rem;
+  }
+  .detail-copy p {
+    font-size: 15px;
+  }
+  .price {
+    font-size: 1.35rem;
+  }
+  .bento .detail-copy {
+    padding: 25px;
+  }
+  .add-row {
+    flex-wrap: wrap;
+  }
+  .two-columns {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .panel {
+    padding: 23px;
+  }
+  .cart-item {
+    grid-template-columns: 85px 1fr;
+    gap: 17px;
+  }
+  .cart-item img {
+    width: 85px;
+  }
+  .cart-item h2 {
+    font-size: 1.2rem;
+  }
+  .cart-item > .qty {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .cart-item .meta-note {
+    font-size: 12px;
+  }
+  .checkout-steps li {
+    font-size: 12px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .success {
+    margin-block: 40px;
+  }
+  .success h1 {
+    font-size: 2.8rem;
+  }
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .about-grid .detail-art {
+    order: -1;
+  }
+  .about-copy h2 {
+    font-size: 2rem;
+  }
+  .contact-card {
+    padding: 25px;
+  }
+  .contact-card h2 {
+    font-size: 1.75rem;
+  }
+  .bento .page-heading {
+    padding: 26px;
+  }
+  .proposal-info {
+    font-size: 12px;
+  }
+  .empty {
+    padding: 55px 20px;
+  }
+  .radio-card {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

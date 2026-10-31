@@ -1,0 +1,118 @@
+/* Navegação por clique: details/summary já oferece teclado e estado expandido. */
+.site-nav {
+  align-items: flex-start;
+  gap: 8px 18px;
+  overflow: visible;
+}
+.category-menu {
+  position: relative;
+  min-width: 0;
+}
+.category-menu summary {
+  cursor: pointer;
+  min-height: 48px;
+  padding: 10px 8px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.category-menu summary:focus-visible {
+  outline: 3px solid #b74913;
+  outline-offset: 3px;
+}
+.category-submenu {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  width: 285px;
+  max-width: 100%;
+}
+.category-submenu a {
+  display: block;
+  padding: 12px;
+  min-height: 48px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.category-submenu a:hover,
+.category-submenu a:focus-visible {
+  background: var(--soft);
+}
+.category-menu[open] {
+  flex-basis: 285px;
+}
+.category-submenu .school-menu-link {
+  font-weight: 700;
+  border-top: 1px solid var(--line);
+}
+.taxonomy-filters {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+}
+.taxonomy-filters .field,
+.taxonomy-filters select {
+  width: 100%;
+  min-width: 0;
+}
+.taxonomy-filters select {
+  min-height: 48px;
+  padding: 10px;
+  background: white;
+  color: var(--ink);
+}
+.breadcrumb {
+  flex-wrap: wrap;
+  overflow-wrap: anywhere;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 24px;
+}
+.services-grid h2 {
+  font-size: 1.7rem;
+  margin-bottom: 16px;
+}
+@media (max-width: 800px) {
+  .site-nav.open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .category-menu[open] {
+    flex-basis: auto;
+  }
+  .category-submenu {
+    width: 100%;
+  }
+  .category-menu summary {
+    padding: 12px;
+  }
+  .taxonomy-filters {
+    width: 100%;
+  }
+}
+/* No computador, o submenu flutua sem empurrar a vitrine para baixo. */
+@media (min-width: 801px) {
+  .category-menu[open] {
+    flex-basis: auto;
+  }
+  .category-submenu {
+    position: absolute;
+    z-index: 30;
+    top: 100%;
+    left: 0;
+    width: 285px;
+    max-width: none;
+    box-shadow: 0 8px 24px #183d2d20;
+  }
+}
+
+/* Os seis links do topo têm o mesmo peso e espaçamento. */
+.site-nav .list-nav, .site-nav a {
+  background: transparent; color: var(--ink); border: 0; border-radius: 0;
+  padding: 8px 0; min-height: 44px; font-size: 1rem; font-weight: 400;
+}
+.site-nav { align-items: center; gap: 12px 30px; }
